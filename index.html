@@ -349,7 +349,7 @@
         </div>
         <div class="img-side">
           <img src="https://placehold.co/500x400/0a0a0a/4dabf7?text=Kerov+Team+In+Action" alt="Kerov Team Gameplay" />
-          <div class="stats">Много хороших участников</div>
+          <div class="stats">50+ игроков</div>
         </div>
       </div>
     </div>
@@ -407,7 +407,7 @@
             </div>
             <div class="form-group">
               <label>Контакт (Telegram)</label>
-              <input type="text" name="contact" placeholder="@username или номер телефона" required />
+              <input type="text" name="contact" placeholder="@username или номер" required />
             </div>
           </div>
           <div class="form-group">
@@ -431,13 +431,11 @@
   </footer>
 
   <script>
-    // === НАСТРОЙКИ: Замени на свои! ===
-    const BOT_TOKEN = '
-          7984334178:AAG6k6BUuS2J5fjgI-g06-u8HyeRmtiIBB8
-        '; // ← Твой токен бота
-    const CHAT_ID = '7984334178'; // ← Твой ID
+    // === ЗАМЕНИ НА СВОИ ДАННЫЕ ===
+    const BOT_TOKEN = '7984334178:AAG6k6BUuS2J5fjgI-g06-u8HyeRmtiIBB8'; // ← Токен бота
+    const CHAT_ID = '7984334178'; // ← Твой ID из @userinfobot
     const TELEGRAM_API = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
-    // ================================
+    // ============================
 
     const form = document.getElementById('applyForm');
     const alertDiv = document.getElementById('alert');
@@ -481,11 +479,11 @@
           alertDiv.innerHTML = '<div class="alert alert-success">✅ Заявка отправлена! Мы свяжемся с тобой в Telegram.</div>';
           form.reset();
         } else {
-          throw new Error(result.description);
+          throw new Error(result.description || 'Ошибка отправки');
         }
       } catch (err) {
         console.error('Ошибка:', err);
-        alertDiv.innerHTML = `<div class="alert alert-error">❌ Ошибка: ${err.message || 'Не удалось отправить'}</div>`;
+        alertDiv.innerHTML = `<div class="alert alert-error">❌ Ошибка: ${err.message}</div>`;
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Отправить заявку';
