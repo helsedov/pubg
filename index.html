@@ -4,120 +4,111 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>KEROV TEAM</title>
-  <style id="theme-styles">
-    /* === ТЁМНАЯ ТЕМА (по умолчанию) === */
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0f0f14;
-      color: #e0e0e0;
+  <style>
+    /* Обнуление */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #0f0f14;
+      color: #e0e0e0;
       line-height: 1.6;
-      transition: background-color 0.3s, color 0.3s;
-      overflow-x: hidden;
+      min-height: 100vh;
     }
     .container {
       max-width: 900px;
       margin: 0 auto;
-      padding: 20px;
-      position: relative;
+      padding: 60px 20px 20px;
     }
-
-    /* Стиль для логотипа */
-    .logo {
-      position: fixed;
-      left: 50%;
-      top: 100px;
-      transform: translateX(-50%);
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: #f8c900;
-      background-image: url('https://via.placeholder.com/120/1a1a1a/f8c900?text=K'); /* ← Замени ссылку на своё изображение */
-      background-size: cover;
-      background-position: center;
-      border: 4px solid #f8c900;
-      box-shadow: 0 0 20px rgba(248, 201, 0, 0.3);
-      z-index: 1000;
-      transition: top 0.6s ease-in-out, left 0.6s ease-in-out, transform 0.6s ease-in-out;
-    }
-
-    .logo.stuck {
-      top: 20px;
-      left: auto;
-      right: 20px;
-      transform: none;
-    }
-
     h1 {
       color: #f8c900;
       text-align: center;
-      font-size: 2.8em;
+      font-size: 3.5em;
       margin-bottom: 10px;
-      opacity: 0;
-      height: 0;
+      font-weight: 700;
+      cursor: pointer;
+      user-select: none;
     }
-    h2 {
-      color: #f8c900;
-      border-bottom: 2px solid #f8c900;
-      padding-bottom: 5px;
-      margin-top: 160px; /* Чтобы контент не лез под логотип */
-    }
-    h3 {
-      color: #f8c900;
-      font-size: 1.5em;
+    h1:hover {
+      text-shadow: 0 0 10px rgba(248, 201, 0, 0.5);
     }
     p {
-      font-size: 1.1em;
-    }
-    .highlight {
-      color: #f8c900;
-      font-weight: bold;
+      text-align: center;
+      font-size: 1.2em;
+      margin-bottom: 30px;
+      color: #ccc;
     }
     .btn {
       display: inline-block;
       background: #f8c900;
       color: #000;
-      padding: 12px 25px;
-      margin: 15px 0;
+      padding: 14px 30px;
+      margin: 10px 10px;
       border: none;
-      border-radius: 5px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       cursor: pointer;
-      font-size: 1em;
+      font-size: 1.1em;
+      transition: all 0.3s;
     }
     .btn:hover {
       background: #e0b500;
+      transform: translateY(-2px);
     }
     .btn-outline {
       background: transparent;
       color: #f8c900;
-      border: 1px solid #f8c900;
+      border: 2px solid #f8c900;
     }
     .btn-outline:hover {
       background: #f8c900;
       color: #000;
     }
+    h2 {
+      color: #f8c900;
+      font-size: 2em;
+      margin: 40px 0 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f8c900;
+    }
+    h3 {
+      color: #f8c900;
+      font-size: 1.6em;
+      margin: 25px 0 10px;
+    }
+    .highlight {
+      color: #f8c900;
+      font-weight: bold;
+    }
     ul {
-      padding-left: 20px;
+      list-style: none;
+      margin: 20px 0;
     }
     li {
-      margin: 10px 0;
+      margin: 15px 0;
+      font-size: 1.1em;
+    }
+    li strong {
+      color: #f8c900;
     }
     .form-group {
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
     label {
       display: block;
-      margin-bottom: 5px;
+      margin-bottom: 8px;
       font-weight: bold;
+      color: #f8c900;
     }
     input, textarea {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       border: 1px solid #444;
-      border-radius: 5px;
+      border-radius: 6px;
       background: #1a1a1a;
       color: #fff;
       font-size: 1em;
@@ -125,154 +116,134 @@
     input:focus, textarea:focus {
       outline: none;
       border-color: #f8c900;
+      box-shadow: 0 0 5px rgba(248, 201, 0, 0.4);
     }
     .application {
       background: #1a1a1a;
       padding: 15px;
-      margin-bottom: 10px;
-      border-radius: 5px;
+      margin-bottom: 15px;
+      border-radius: 6px;
       border-left: 4px solid #f8c900;
-      position: relative;
     }
     .app-header {
       font-weight: bold;
       color: #f8c900;
-      margin-bottom: 5px;
+      font-size: 1.2em;
     }
     .app-time {
-      font-size: 0.8em;
+      font-size: 0.85em;
       color: #aaa;
+      margin-top: 5px;
     }
-    .delete-btn {
+    footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 20px;
+      color: #666;
+      font-size: 0.9em;
+      border-top: 1px solid #333;
+    }
+
+    /* Кнопка "Связаться" в правом верхнем углу */
+    .contact-fab {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background: #f8c900;
+      color: #000;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5em;
+      box-shadow: 0 0 15px rgba(248, 201, 0, 0.5);
+      z-index: 1000;
+      text-decoration: none;
+      animation: pulse 2s infinite;
+    }
+    .contact-fab:hover {
+      transform: scale(1.15);
+      box-shadow: 0 0 20px rgba(248, 201, 0, 0.8);
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    /* Скрытая панель модерации */
+    .mod-panel {
       display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 500px;
+      background: #1a1a1a;
+      border: 2px solid #f8c900;
+      border-radius: 10px;
+      padding: 20px;
+      z-index: 2000;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+    }
+    .mod-header {
+      color: #f8c900;
+      text-align: center;
+      margin-bottom: 15px;
+    }
+    .mod-close {
       position: absolute;
       top: 10px;
       right: 10px;
       background: #d32f2f;
       color: white;
       border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+    .mod-list {
+      max-height: 400px;
+      overflow-y: auto;
+      margin-bottom: 15px;
+    }
+    .mod-app {
+      background: #222;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+      border-left: 3px solid #f8c900;
+    }
+    .mod-delete {
+      background: #d32f2f;
+      color: white;
+      border: none;
       padding: 5px 10px;
-      font-size: 0.9em;
       border-radius: 4px;
       cursor: pointer;
-    }
-    .delete-btn.visible {
-      display: inline-block;
-    }
-    .moderation {
-      margin: 20px 0;
-      padding: 15px;
-      background: #1a1a1a;
-      border-radius: 5px;
-    }
-    .moderation input {
-      width: 200px;
-      margin-right: 10px;
-    }
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      background: #f8c900;
-      color: #000;
-      padding: 15px 20px;
-      border-radius: 5px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-      z-index: 1000;
-      font-weight: bold;
-      animation: fadeOut 3s forwards;
-    }
-    @keyframes fadeOut {
-      0% { opacity: 1; }
-      70% { opacity: 1; }
-      100% { opacity: 0; visibility: hidden; }
-    }
-    footer {
-      text-align: center;
-      margin-top: 50px;
-      color: #666;
+      float: right;
       font-size: 0.9em;
-      padding: 20px;
-      border-top: 1px solid #333;
-    }
-    .theme-toggle {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #f8c900;
-      color: #000;
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5em;
-      cursor: pointer;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      z-index: 100;
-    }
-
-    /* === СВЕТАЯ ТЕМА === */
-    body.light-theme {
-      background-color: #f5f5f5;
-      color: #333;
-    }
-    body.light-theme .application,
-    body.light-theme .moderation {
-      background: #fff;
-      border: 1px solid #ddd;
-    }
-    body.light-theme input,
-    body.light-theme textarea {
-      background: #fff;
-      color: #333;
-      border-color: #ccc;
-    }
-    body.light-theme h2,
-    body.light-theme h3,
-    body.light-theme .highlight,
-    body.light-theme .app-header {
-      color: #d48a00;
-    }
-    body.light-theme .btn {
-      background: #d48a00;
-      color: white;
-    }
-    body.light-theme .btn:hover {
-      background: #f8c900;
-      color: #000;
-    }
-    body.light-theme .btn-outline {
-      color: #d48a00;
-      border-color: #d48a00;
-    }
-    body.light-theme .btn-outline:hover {
-      background: #d48a00;
-      color: white;
-    }
-    body.light-theme .notification {
-      background: #d48a00;
-      color: white;
-    }
-    body.light-theme footer {
-      color: #777;
-      border-top-color: #ddd;
     }
   </style>
 </head>
 <body>
-  <!-- Логотип -->
-  <div class="logo" id="logo"></div>
+  <!-- Кнопка "Связаться" в правом верхнем углу -->
+  <a href="https://t.me/kerov_clan" target="_blank" class="contact-fab">💬</a>
 
+  <!-- Заголовок (по клику 5 раз активирует модерацию) -->
   <div class="container">
-    <h1>KEROV TEAM</h1>
+    <h1 id="logo">KEROV TEAM</h1>
     <p>Набор в клан по Metro Royale — ищем тех, кто играет не один, а в настоящей команде, где победы — общие.</p>
-    
-    <p>
-      <a href="#contact" class="btn">Связаться</a>
+
+    <div style="text-align: center;">
+      <a href="#join" class="btn">Вступить в клан</a>
       <a href="#applications" class="btn btn-outline">Посмотреть заявки</a>
-    </p>
+    </div>
 
     <h2>Мы — не просто клан.</h2>
     <p>
@@ -288,18 +259,28 @@
       <li><strong>Добросовестность</strong> — Не бросаешь команду, играешь в полную</li>
     </ul>
 
-    <h2 id="contact">Хочешь в команду?</h2>
-    <p>
-      <a href="https://t.me/kerov_clan" target="_blank" class="btn">💬 Написать в Telegram</a>
-    </p>
+    <h2 id="join">Хочешь в команду?</h2>
+    <p>Напиши нам — обсудим, посмотрим статы и добавим в клан!</p>
 
-    <!-- Модерация -->
-    <div class="moderation" id="moderationSection">
-      <h3>Модерация заявок</h3>
-      <p>Введите пароль для управления заявками:</p>
-      <input type="password" id="modPassword">
-      <button id="loginBtn" class="btn">Войти</button>
-    </div>
+    <form id="applicationForm" style="max-width: 600px; margin: 20px auto;">
+      <div class="form-group">
+        <label>Имя в игре</label>
+        <input type="text" id="nickname" placeholder="Ваш никнейм" required />
+      </div>
+      <div class="form-group">
+        <label>K/D (убийства/смертей)</label>
+        <input type="number" step="0.1" id="kd" placeholder="1.5" required />
+      </div>
+      <div class="form-group">
+        <label>Возраст</label>
+        <input type="number" id="age" placeholder="16" required />
+      </div>
+      <div class="form-group">
+        <label>Почему хочешь в KEROV TEAM?</label>
+        <textarea id="reason" rows="3" placeholder="Расскажи о себе..." required></textarea>
+      </div>
+      <button type="submit" class="btn" style="margin: 0;">Отправить заявку</button>
+    </form>
 
     <h2 id="applications">Поступившие заявки</h2>
     <div id="applicationsList">
@@ -311,89 +292,83 @@
     </footer>
   </div>
 
+  <!-- Скрытая панель модерации -->
+  <div class="mod-panel" id="modPanel">
+    <button class="mod-close" id="modClose">×</button>
+    <h3 class="mod-header">Модерация заявок</h3>
+    <div class="mod-list" id="modList">
+      <!-- Заявки для удаления -->
+    </div>
+  </div>
+
   <script>
+    const form = document.getElementById('applicationForm');
     const list = document.getElementById('applicationsList');
-    const passwordInput = document.getElementById('modPassword');
-    const loginBtn = document.getElementById('loginBtn');
-    const themeToggle = document.getElementById('themeToggle');
     const logo = document.getElementById('logo');
+    const modPanel = document.getElementById('modPanel');
+    const modList = document.getElementById('modList');
+    const modClose = document.getElementById('modClose');
 
-    // === НАСТРОЙКИ ===
-    const MOD_PASSWORD = 'kerov123'; // ← Измени пароль здесь
-    const TELEGRAM_LINK = 'https://t.me/kerov_clan'; // ← Ссылка на Telegram
-    // =================
+    let clickCount = 0;
 
-    // Переключение темы
-    function toggleTheme() {
-      document.body.classList.toggle('light-theme');
-      const isLight = document.body.classList.contains('light-theme');
-      localStorage.setItem('kerovTheme', isLight ? 'light' : 'dark');
-      themeToggle.textContent = isLight ? '🌙' : '🌞';
-    }
-
-    // Восстановление темы
-    function loadTheme() {
-      const saved = localStorage.getItem('kerovTheme');
-      if (saved === 'light') {
-        document.body.classList.add('light-theme');
-        themeToggle.textContent = '🌙';
+    // Скрытая активация модерации (5 кликов по заголовку)
+    logo.addEventListener('click', () => {
+      clickCount++;
+      if (clickCount >= 5) {
+        modPanel.style.display = 'block';
+        loadModApplications();
+        clickCount = 0;
       }
-    }
-
-    // Показ уведомления
-    function notify(message) {
-      const notif = document.createElement('div');
-      notif.className = 'notification';
-      notif.textContent = message;
-      document.body.appendChild(notif);
-      setTimeout(() => document.body.removeChild(notif), 3000);
-    }
-
-    // Анимация логотипа при прокрутке
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.scrollY;
-
-      if (scrollPosition > 100) {
-        logo.classList.add('stuck');
-      } else {
-        logo.classList.remove('stuck');
-      }
+      setTimeout(() => { clickCount = 0; }, 1000);
     });
 
-    // Загрузка заявок
+    // Закрыть панель модерации
+    modClose.addEventListener('click', () => {
+      modPanel.style.display = 'none';
+    });
+
+    // Загрузка заявок на сайт
     function loadApplications() {
       const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
       list.innerHTML = apps.length === 0 
         ? '<p>Пока нет заявок. Будь первым!</p>' 
         : '';
 
-      apps.forEach((app, index) => {
+      apps.forEach(app => {
         const appEl = document.createElement('div');
         appEl.className = 'application';
-        appEl.dataset.id = index;
-
         appEl.innerHTML = `
           <div class="app-header">${app.nickname}</div>
           <p><strong>K/D:</strong> ${app.kd} | <strong>Возраст:</strong> ${app.age}</p>
           <p><strong>Почему хочет в клан:</strong> ${app.reason}</p>
           <div class="app-time">Подана: ${new Date(app.timestamp).toLocaleString('ru-RU')}</div>
-          <button class="delete-btn" data-id="${index}">Удалить</button>
         `;
         list.appendChild(appEl);
       });
+    }
 
-      // Обработчики удаления
-      document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.addEventListener('click', function () {
-          const id = parseInt(this.dataset.id);
-          deleteApplication(id);
-        });
+    // Загрузка заявок в панель модерации
+    function loadModApplications() {
+      const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
+      modList.innerHTML = apps.length === 0 ? '<p>Заявок нет</p>' : '';
+
+      apps.forEach((app, index) => {
+        const appEl = document.createElement('div');
+        appEl.className = 'mod-app';
+        appEl.innerHTML = `
+          <div><strong>${app.nickname}</strong> (K/D: ${app.kd}, Возраст: ${app.age})</div>
+          <div style="margin: 5px 0; font-size: 0.9em; color: #ccc;">"${app.reason}"</div>
+          <button class="mod-delete" data-index="${index}">Удалить</button>
+        `;
+        modList.appendChild(appEl);
       });
 
-      // Показ кнопок удаления, если авторизован
-      const isVisible = isAuthenticated();
-      document.querySelectorAll('.delete-btn').forEach(btn => {
-        btn.classList.toggle('visible', isVisible);
+      // Добавляем обработчики удаления
+      document.querySelectorAll('.mod-delete').forEach(btn => {
+        btn.addEventListener('click', function () {
+          const id = parseInt(this.dataset.index);
+          deleteApplication(id);
+        });
       });
     }
 
@@ -402,47 +377,36 @@
       const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
       const filtered = apps.filter((_, index) => index !== id);
       localStorage.setItem('kerovApplications', JSON.stringify(filtered));
-      notify('Заявка удалена');
+      modList.innerHTML = '';
+      list.innerHTML = '';
       loadApplications();
+      loadModApplications();
+      alert('Заявка удалена');
     }
 
-    // Проверка авторизации
-    function isAuthenticated() {
-      return localStorage.getItem('kerovMod') === 'true';
-    }
+    // Отправка заявки
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
 
-    // Вход/выход
-    loginBtn.addEventListener('click', () => {
-      if (isAuthenticated()) {
-        localStorage.removeItem('kerovMod');
-        loginBtn.textContent = 'Войти';
-        passwordInput.style.display = 'inline-block';
-        notify('Вы вышли из режима модерации');
-      } else {
-        if (passwordInput.value === MOD_PASSWORD) {
-          localStorage.setItem('kerovMod', 'true');
-          loginBtn.textContent = 'Выйти';
-          passwordInput.value = '';
-          passwordInput.style.display = 'none';
-          notify('Добро пожаловать, модератор!');
-        } else {
-          alert('❌ Неверный пароль!');
-        }
-      }
+      const app = {
+        nickname: document.getElementById('nickname').value.trim(),
+        kd: document.getElementById('kd').value,
+        age: document.getElementById('age').value,
+        reason: document.getElementById('reason').value.trim(),
+        timestamp: Date.now()
+      };
+
+      const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
+      apps.push(app);
+      localStorage.setItem('kerovApplications', JSON.stringify(apps));
+
+      form.reset();
+      alert('✅ Заявка отправлена! Спасибо, скоро свяжемся.');
       loadApplications();
     });
 
-    // Переключение темы
-    themeToggle.addEventListener('click', toggleTheme);
-
     // Инициализация
-    loadTheme();
     loadApplications();
-
-    if (isAuthenticated()) {
-      loginBtn.textContent = 'Выйти';
-      passwordInput.style.display = 'none';
-    }
   </script>
 </body>
-</html>
+  </html>
