@@ -1,402 +1,405 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KEROV TEAM</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #0f0f14;
-      color: #e0e0e0;
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-    .container {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 60px 20px 20px;
-    }
-    h1 {
-      color: #f8c900;
-      text-align: center;
-      font-size: 3.5em;
-      margin-bottom: 10px;
-      font-weight: 700;
-    }
-    p {
-      text-align: center;
-      font-size: 1.2em;
-      margin-bottom: 30px;
-      color: #ccc;
-    }
-    .btn {
-      display: inline-block;
-      background: #f8c900;
-      color: #000;
-      padding: 14px 30px;
-      margin: 10px 10px;
-      border: none;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 1.1em;
-      transition: all 0.3s;
-    }
-    .btn:hover {
-      background: #e0b500;
-      transform: translateY(-2px);
-    }
-    .btn-outline {
-      background: transparent;
-      color: #f8c900;
-      border: 2px solid #f8c900;
-    }
-    .btn-outline:hover {
-      background: #f8c900;
-      color: #000;
-    }
-    h2 {
-      color: #f8c900;
-      font-size: 2em;
-      margin: 40px 0 20px;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #f8c900;
-    }
-    h3 {
-      color: #f8c900;
-      font-size: 1.6em;
-      margin: 25px 0 10px;
-    }
-    .highlight {
-      color: #f8c900;
-      font-weight: bold;
-    }
-    ul {
-      list-style: none;
-      margin: 20px 0;
-    }
-    li {
-      margin: 15px 0;
-      font-size: 1.1em;
-    }
-    li strong {
-      color: #f8c900;
-    }
-    .form-group {
-      margin-bottom: 20px;
-    }
-    label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: bold;
-      color: #f8c900;
-    }
-    input, textarea {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #444;
-      border-radius: 6px;
-      background: #1a1a1a;
-      color: #fff;
-      font-size: 1em;
-    }
-    input:focus, textarea:focus {
-      outline: none;
-      border-color: #f8c900;
-      box-shadow: 0 0 5px rgba(248, 201, 0, 0.4);
-    }
-    .application {
-      background: #1a1a1a;
-      padding: 15px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border-left: 4px solid #f8c900;
-    }
-    .app-header {
-      font-weight: bold;
-      color: #f8c900;
-      font-size: 1.2em;
-    }
-    .app-time {
-      font-size: 0.85em;
-      color: #aaa;
-      margin-top: 5px;
-    }
-    footer {
-      text-align: center;
-      margin-top: 60px;
-      padding: 20px;
-      color: #666;
-      font-size: 0.9em;
-      border-top: 1px solid #333;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KEROV TEAM | Набор в клан PUBG</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    /* Кнопка "Связаться" — как в оригинале */
-    .contact-fab {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 50px;
-      height: 50px;
-      background: #f8c900;
-      color: #000;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5em;
-      box-shadow: 0 0 15px rgba(248, 201, 0, 0.5);
-      z-index: 1000;
-      text-decoration: none;
-    }
-    .contact-fab:hover {
-      transform: scale(1.1);
-    }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a2a6c, #2c3e50);
+            color: #fff;
+            line-height: 1.6;
+            min-height: 100vh;
+            background-attachment: fixed;
+        }
 
-    /* Скрытая панель модерации (никто не увидит) */
-    .mod-panel {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      width: 90%;
-      max-width: 500px;
-      background: #1a1a1a;
-      border: 2px solid #f8c900;
-      border-radius: 10px;
-      padding: 20px;
-      z-index: 2000;
-      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-    }
-    .mod-header {
-      color: #f8c900;
-      text-align: center;
-      margin-bottom: 15px;
-    }
-    .mod-close {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: #d32f2f;
-      color: white;
-      border: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2em;
-    }
-    .mod-list {
-      max-height: 400px;
-      overflow-y: auto;
-    }
-    .mod-app {
-      background: #222;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-radius: 5px;
-      border-left: 3px solid #f8c900;
-    }
-    .mod-delete {
-      background: #d32f2f;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      float: right;
-      font-size: 0.9em;
-    }
-  </style>
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+            background: linear-gradient(to right, #00ffff, #00ff9d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #00c6ff, #0072ff);
+            color: white;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 114, 255, 0.4);
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 114, 255, 0.6);
+        }
+
+        .section {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+            color: #00ffff;
+        }
+
+        .philosophy-text {
+            font-size: 1.3rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .philosophy-text strong {
+            color: #00ff9d;
+        }
+
+        .requirements {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .requirement-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .requirement-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .requirement-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #00c6ff;
+        }
+
+        .application-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.2rem;
+            background: linear-gradient(45deg, #00ff9d, #00c6ff);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 255, 157, 0.4);
+        }
+
+        .submit-btn:disabled {
+            background: linear-gradient(45deg, #6c757d, #495057);
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            font-weight: bold;
+            z-index: 1000;
+            transform: translateX(200%);
+            transition: transform 0.3s ease;
+            max-width: 300px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.success {
+            background: linear-gradient(45deg, #00ff9d, #00c6ff);
+        }
+
+        .notification.error {
+            background: linear-gradient(45deg, #ff416c, #ff4b2b);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            margin-top: 40px;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section {
+                padding: 25px;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
 </head>
 <body>
-  <!-- Кнопка "Связаться" в правом верхнем углу -->
-  <a href="https://t.me/kerov_clan" target="_blank" class="contact-fab">💬</a>
+    <div class="container">
+        <header>
+            <h1>KEROV TEAM</h1>
+            <p class="subtitle">Набор в клан по Metro Royale — ищем тех, кто играет не один, а в настоящей команде, где победы — общие.</p>
+            <a href="#application" class="cta-button">Вступить в клан</a>
+        </header>
 
-  <div class="container">
-    <h1>KEROV TEAM</h1>
-    <p>Набор в клан по Metro Royale — ищем тех, кто играет не один, а в настоящей команде, где победы — общие.</p>
+        <section class="section">
+            <h2 class="section-title">Мы — не просто клан.</h2>
+            <p class="philosophy-text">Мы создаём <strong>семью</strong> — с поддержкой, стратегиями, чистой игрой и нормальной атмосферой.<br>Никакого токсика. Только уважение, драйв и результат.</p>
+        </section>
 
-    <div style="text-align: center;">
-      <a href="#join" class="btn">Вступить в клан</a>
-      <a href="#applications" class="btn btn-outline">Узнать больше</a>
+        <section class="section">
+            <h2 class="section-title">Что нужно, чтобы присоединиться?</h2>
+            <div class="requirements">
+                <div class="requirement-card">
+                    <h3 class="requirement-title">K/D > 1</h3>
+                    <p>Показываешь, что умеешь держать планку</p>
+                </div>
+                <div class="requirement-card">
+                    <h3 class="requirement-title">От 14 лет</h3>
+                    <p>Зрелость важна (но исключения возможны)</p>
+                </div>
+                <div class="requirement-card">
+                    <h3 class="requirement-title">Честность</h3>
+                    <p>Не крысить и не подсасывать</p>
+                </div>
+                <div class="requirement-card">
+                    <h3 class="requirement-title">Добросовестность</h3>
+                    <p>Не бросаешь команду, играешь в полную</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="application" class="section">
+            <h2 class="section-title">Хочешь в команду?</h2>
+            <p style="text-align: center; margin-bottom: 30px;">Напиши нам — обсудим, посмотрим статы и добавим в клан!</p>
+            
+            <form class="application-form" id="applicationForm">
+                <div class="form-group">
+                    <label for="nickname">Игровой никнейм *</label>
+                    <input type="text" id="nickname" name="nickname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="kd">K/D соотношение *</label>
+                    <input type="text" id="kd" name="kd" placeholder="Например: 2.5" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="age">Возраст *</label>
+                    <input type="number" id="age" name="age" min="12" max="60" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="contact">Контакт для связи (Discord/Telegram) *</label>
+                    <input type="text" id="contact" name="contact" placeholder="@username или Discord#1234" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="experience">Опыт в PUBG (часы)</label>
+                    <input type="number" id="experience" name="experience" min="0">
+                </div>
+                
+                <div class="form-group">
+                    <label for="message">Почему ты хочешь вступить в наш клан?</label>
+                    <textarea id="message" name="message" placeholder="Расскажи немного о себе..."></textarea>
+                </div>
+                
+                <button type="submit" class="submit-btn">Отправить заявку</button>
+            </form>
+        </section>
+
+        <footer>
+            <p>© 2023 KEROV TEAM | Все права защищены</p>
+        </footer>
     </div>
 
-    <h2>Мы — не просто клан.</h2>
-    <p>
-      Мы создаём <span class="highlight">семью</span> — с поддержкой, стратегиями, чистой игрой и нормальной атмосферой. 
-      Никакого токсика. Только уважение, драйв и результат.
-    </p>
+    <div class="notification" id="notification"></div>
 
-    <h2>Что нужно, чтобы присоединиться?</h2>
-    <ul>
-      <li>
-        <h3>K/D > 1</h3>
-        <p>Показываешь, что умеешь держать планку</p>
-      </li>
-      <li>
-        <h3>От 14 лет</h3>
-        <p>Зрелость важна (но исключения возможны)</p>
-      </li>
-      <li>
-        <h3>Честность</h3>
-        <p>Не крысить и не подсасывать</p>
-      </li>
-      <li>
-        <h3>Добросовестность</h3>
-        <p>Не бросаешь команду, играешь в полную</p>
-      </li>
-    </ul>
+    <script>
+        document.getElementById('applicationForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Блокируем кнопку отправки
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Отправка...';
+            
+            // Собираем данные формы
+            const formData = new FormData(this);
+            const data = {
+                nickname: formData.get('nickname'),
+                kd: formData.get('kd'),
+                age: formData.get('age'),
+                contact: formData.get('contact'),
+                experience: formData.get('experience') || 'Не указано',
+                message: formData.get('message') || 'Не указано'
+            };
+            
+            // Формируем сообщение для Telegram
+            const message = `
+📬 <b>Новая заявка в клан KEROV TEAM</b>
 
-    <h2 id="join">Хочешь в команду?</h2>
-    <p>Напиши нам — обсудим, посмотрим статы и добавим в клан!</p>
-
-    <form id="applicationForm" style="max-width: 600px; margin: 20px auto;">
-      <div class="form-group">
-        <label>Имя в игре</label>
-        <input type="text" id="nickname" placeholder="Ваш никнейм" required />
-      </div>
-      <div class="form-group">
-        <label>K/D (убийства/смертей)</label>
-        <input type="number" step="0.1" id="kd" placeholder="1.5" required />
-      </div>
-      <div class="form-group">
-        <label>Возраст</label>
-        <input type="number" id="age" placeholder="16" required />
-      </div>
-      <div class="form-group">
-        <label>Почему хочешь в KEROV TEAM?</label>
-        <textarea id="reason" rows="3" placeholder="Расскажи о себе..." required></textarea>
-      </div>
-      <button type="submit" class="btn" style="margin: 0;">Отправить заявку</button>
-    </form>
-
-    <h2 id="applications">Поступившие заявки</h2>
-    <div id="applicationsList">
-      <!-- Заявки будут добавлены здесь -->
-    </div>
-
-    <footer>
-      &copy; 2025 KEROV TEAM. Все заявки хранятся локально.
-    </footer>
-  </div>
-
-  <!-- Скрытая панель модерации (открывается по 5 кликам на "Вступить в клан") -->
-  <div class="mod-panel" id="modPanel">
-    <button class="mod-close" id="modClose">×</button>
-    <h3 class="mod-header">Модерация заявок</h3>
-    <div class="mod-list" id="modList"></div>
-  </div>
-
-  <script>
-    const form = document.getElementById('applicationForm');
-    const list = document.getElementById('applicationsList');
-    const joinBtn = document.querySelector('a[href="#join"]');
-    const modPanel = document.getElementById('modPanel');
-    const modList = document.getElementById('modList');
-    const modClose = document.getElementById('modClose');
-
-    let clickCount = 0;
-
-    // Активация модерации: 5 кликов по кнопке "Вступить в клан"
-    joinBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      clickCount++;
-      if (clickCount >= 5) {
-        modPanel.style.display = 'block';
-        loadModApplications();
-        clickCount = 0;
-      }
-      setTimeout(() => { clickCount = 0; }, 1000);
-    });
-
-    modClose.addEventListener('click', () => {
-      modPanel.style.display = 'none';
-    });
-
-    function loadApplications() {
-      const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
-      list.innerHTML = apps.length === 0 
-        ? '<p>Пока нет заявок. Будь первым!</p>' 
-        : '';
-      
-      apps.forEach(app => {
-        const appEl = document.createElement('div');
-        appEl.className = 'application';
-        appEl.innerHTML = `
-          <div class="app-header">${app.nickname}</div>
-          <p><strong>K/D:</strong> ${app.kd} | <strong>Возраст:</strong> ${app.age}</p>
-          <p><strong>Почему хочет в клан:</strong> ${app.reason}</p>
-          <div class="app-time">Подана: ${new Date(app.timestamp).toLocaleString('ru-RU')}</div>
-        `;
-        list.appendChild(appEl);
-      });
-    }
-
-    function loadModApplications() {
-      const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
-      modList.innerHTML = apps.length === 0 ? '<p>Заявок нет</p>' : '';
-      
-      apps.forEach((app, index) => {
-        const appEl = document.createElement('div');
-        appEl.className = 'mod-app';
-        appEl.innerHTML = `
-          <div><strong>${app.nickname}</strong> (K/D: ${app.kd})</div>
-          <div style="margin: 5px 0; font-size: 0.9em; color: #ccc;">"${app.reason}"</div>
-          <button class="mod-delete" data-index="${index}">Удалить</button>
-        `;
-        modList.appendChild(appEl);
-      });
-
-      document.querySelectorAll('.mod-delete').forEach(btn => {
-        btn.addEventListener('click', function () {
-          const id = parseInt(this.dataset.index);
-          deleteApplication(id);
+👤 <b>Никнейм:</b> ${data.nickname}
+📊 <b>K/D:</b> ${data.kd}
+🎂 <b>Возраст:</b> ${data.age} лет
+📞 <b>Контакт:</b> ${data.contact}
+⏱ <b>Опыт:</b> ${data.experience} часов
+💭 <b>Сообщение:</b> ${data.message}
+            `;
+            
+            try {
+                // URL для отправки сообщения через Telegram Bot API
+                const telegramBotToken = '7984334178:AAG6k6BUuS2J5fjgI-g06-u8HyeRmtiIBB8';
+                const chatId = '829538504';
+                const url = `https://api.telegram.org/bot${telegramBotToken}/sendMessage`;
+                
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
+                });
+                
+                if (response.ok) {
+                    showNotification('✅ Заявка успешно отправлена!', 'success');
+                    this.reset();
+                } else {
+                    const errorData = await response.json();
+                    throw new Error(errorData.description || 'Ошибка отправки');
+                }
+            } catch (error) {
+                showNotification(`❌ Ошибка: ${error.message}`, 'error');
+                console.error('Ошибка:', error);
+            } finally {
+                // Восстанавливаем кнопку отправки
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
         });
-      });
-    }
-
-    function deleteApplication(id) {
-      const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
-      const filtered = apps.filter((_, i) => i !== id);
-      localStorage.setItem('kerovApplications', JSON.stringify(filtered));
-      list.innerHTML = '';
-      modList.innerHTML = '';
-      loadApplications();
-      loadModApplications();
-      alert('Заявка удалена');
-    }
-
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      const app = {
-        nickname: document.getElementById('nickname').value.trim(),
-        kd: document.getElementById('kd').value,
-        age: document.getElementById('age').value,
-        reason: document.getElementById('reason').value.trim(),
-        timestamp: Date.now()
-      };
-
-      const apps = JSON.parse(localStorage.getItem('kerovApplications')) || [];
-      apps.push(app);
-      localStorage.setItem('kerovApplications', JSON.stringify(apps));
-
-      form.reset();
-      alert('✅ Заявка отправлена! Спасибо, скоро свяжемся.');
-      loadApplications();
-    });
-
-    // Загрузка при старте
-    loadApplications();
-  </script>
+        
+        function showNotification(message, type) {
+            const notification = document.getElementById('notification');
+            notification.innerHTML = message;
+            notification.className = `notification ${type} show`;
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 5000);
+        }
+        
+        // Плавная прокрутка для кнопки
+        document.querySelector('.cta-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
-</html>
+  </html>
