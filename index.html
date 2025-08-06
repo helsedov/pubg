@@ -239,6 +239,7 @@
             <h1>KEROV TEAM</h1>
             <p class="subtitle">Набор в клан по Metro Royale — ищем тех, кто играет не один, а в настоящей команде, где победы — общие.</p>
             <a href="#application" class="cta-button">Вступить в клан</a>
+            <a href="https://t.me/kerov_clan" class="cta-button">Связь с владельцем</a>
         </header>
 
         <section class="section">
@@ -275,12 +276,12 @@
             <form class="application-form" id="applicationForm">
                 <div class="form-group">
                     <label for="nickname">Игровой никнейм *</label>
-                    <input type="text" id="nickname" name="nickname" required>
+                    <input type="text" id="nickname" minlength="5" name="nickname" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="kd">K/D соотношение *</label>
-                    <input type="text" id="kd" name="kd" placeholder="Например: 2.5" required>
+                    <input type="text" id="kd" name="kd" min="1" placeholder="Например: 2.5" required>
                 </div>
                 
                 <div class="form-group">
@@ -290,17 +291,17 @@
                 
                 <div class="form-group">
                     <label for="contact">Контакт для связи (Telegram) *</label>
-                    <input type="text" id="contact" name="contact" placeholder="@username или номер" required>
+                    <input type="text" id="contact" name="contact" minlength="5" placeholder="@username или номер" required>
                 </div>
                 
                 <div class="form-group">
                     <label for="experience">Опыт в PUBG (часы/годы)</label>
-                    <input type="number" id="experience" name="experience" min="0">
+                    <input type="number" id="experience" name="experience" min="1">
                 </div>
                 
                 <div class="form-group">
                     <label for="message">Почему ты хочешь вступить в наш клан?</label>
-                    <textarea id="message" name="message" placeholder="Расскажи немного о себе..."></textarea>
+                    <textarea id="message" name="message" minlength="20" placeholder="Расскажи немного о себе..."></textarea>
                 </div>
                 
                 <button type="submit" class="submit-btn">Отправить заявку</button>
